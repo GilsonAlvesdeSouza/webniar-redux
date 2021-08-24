@@ -5,12 +5,18 @@ import {Input, Button, List} from '../../components';
 import {addTodo} from '../../store';
 
 class App extends Component {
+
     state = {
         input: '',
     };
 
     handleOnClick = () => {
-        alert(this.state.input);
+        const {addTodo} = this.props;
+        const {input} = this.state;
+        if (input !== '') {
+            addTodo(input);
+            this.setState({input: ''});
+        }
     }
 
     handleOnChange = (event) => {
@@ -20,12 +26,10 @@ class App extends Component {
     }
 
     render() {
-        const {todoList} = this.props;
-
         return (
             <>
-                <List todoList={todoList}/>
-                <Input onChange={this.handleOnChange} value={this.input}/>
+                <List/>
+                <Input onChange={this.handleOnChange} value={this.state.input}/>
                 <Button onClick={this.handleOnClick}>clique aqui</Button>
             </>
         );

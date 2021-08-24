@@ -36,7 +36,7 @@ class App extends Component {
         return (
             <>
                 <List todoList={this.todoList}/>
-                <Input onChange={this.handleOnChange}/>
+                <Input onChange={this.handleOnChange} value={this.input}/>
                 <Button onClick={this.handleOnClick}>clique aqui</Button>
             </>
         );

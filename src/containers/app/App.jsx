@@ -1,26 +1,13 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
 import {Input, Button, List} from '../../components';
+import {addTodo} from '../../store';
 
 class App extends Component {
     state = {
         input: '',
     };
-
-    todoList = [
-        {
-            id: 1,
-            name: 'Sapato',
-        }, {
-            id: 2,
-            name: 'Camisa',
-        }, {
-            id: 3,
-            name: 'Calça',
-        }, {
-            id: 4,
-            name: 'Cinto',
-        }
-    ];
 
     handleOnClick = () => {
         alert(this.state.input);
@@ -33,9 +20,11 @@ class App extends Component {
     }
 
     render() {
+        const {todoList} = this.props;
+
         return (
             <>
-                <List todoList={this.todoList}/>
+                <List todoList={todoList}/>
                 <Input onChange={this.handleOnChange} value={this.input}/>
                 <Button onClick={this.handleOnClick}>clique aqui</Button>
             </>
@@ -43,4 +32,11 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+    todoList: state.todo.list,
+});
+
+export default connect(
+    mapStateToProps,
+    {addTodo}
+)(App);

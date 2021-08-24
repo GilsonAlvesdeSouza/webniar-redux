@@ -1,5 +1,19 @@
 const initialState = {
-    list: [],
+    list: [
+        {
+            id: 1,
+            name: 'Sapato',
+        }, {
+            id: 2,
+            name: 'Camisa',
+        }, {
+            id: 3,
+            name: 'Calça',
+        }, {
+            id: 4,
+            name: 'Cinto',
+        }
+    ],
 };
 
 export default function reducer(state = initialState, action) {

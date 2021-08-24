@@ -7,3 +7,5 @@ export function addTodo(text) {
         }
     };
 }
+
+export default addTodo;
